@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dear Dad ❤️</title>
+<style>
+body{margin:0;font-family:Arial,sans-serif;background:#f7f4ef;color:#333}
+.hero{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:20px}
+.envelope{font-size:90px;cursor:pointer;transition:.3s}
+.envelope:hover{transform:scale(1.1)}
+.section{padding:60px 20px;max-width:1000px;margin:auto}
+.hidden{display:none}
+.timeline{border-left:3px solid #999;padding-left:25px}
+.event{margin:30px 0}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px}
+.gallery img{width:100%;height:280px;object-fit:cover;border-radius:12px}
+.reason-card{background:white;padding:20px;border-radius:12px;margin:15px 0;box-shadow:0 2px 10px rgba(0,0,0,.08)}
+.final{text-align:center;padding:80px 20px}
+.counter{font-size:48px;font-weight:bold}
+button{padding:12px 20px;border:none;border-radius:10px;cursor:pointer}
+</style>
+</head>
+<body>
+
+<div class="hero">
+<h1>Dear Dad ❤️</h1>
+<p>Click the envelope to open your Father's Day surprise</p>
+<div class="envelope" onclick="openLetter()">💌</div>
+</div>
+
+<div id="content" class="hidden">
+
+<section class="section">
+<h2>A Letter For You</h2>
+<p>
+Dear Dad,<br><br>
+Thank you for every lesson, every sacrifice, and every moment of support.
+This small website is a collection of memories and reasons why you'll always be my hero.<br><br>
+Love,<br>
+Ishika ❤️
+</p>
+</section>
+
+<section class="section">
+<h2>Reasons I Love You</h2>
+
+<div class="reason-card">✨ Replace this with your personal reason #1</div>
+<div class="reason-card">✨ Replace this with your personal reason #2</div>
+<div class="reason-card">✨ Replace this with your personal reason #3</div>
+<div class="reason-card">✨ Replace this with your personal reason #4</div>
+</section>
+
+<section class="section">
+<h2>Our Memories</h2>
+<p><b>How to add photos:</b> Put your photos inside an <code>images</code> folder and replace the filenames below.</p>
+
+<div class="gallery">
+<img src="images/photo1.jpg" alt="Memory 1">
+<img src="images/photo2.jpg" alt="Memory 2">
+<img src="images/photo3.jpg" alt="Memory 3">
+<img src="images/photo4.jpg" alt="Memory 4">
+</div>
+</section>
+
+<section class="section">
+<h2>Our Journey</h2>
+
+<div class="timeline">
+<div class="event">
+<h3>👶 Childhood</h3>
+<p>Replace with your memory.</p>
+</div>
+
+<div class="event">
+<h3>📚 School Days</h3>
+<p>Replace with your memory.</p>
+</div>
+
+<div class="event">
+<h3>🎓 Graduation</h3>
+<p>Replace with your memory.</p>
+</div>
+
+<div class="event">
+<h3>❤️ Today</h3>
+<p>Replace with your memory.</p>
+</div>
+</div>
+</section>
+
+<section class="final">
+<div class="counter" id="counter">0</div>
+<h2>Reasons Dad Is Amazing</h2>
+<p>No website can truly capture everything you've done for me.</p>
+<h1>Happy Father's Day ❤️</h1>
+</section>
+
+</div>
+
+<script>
+function openLetter(){
+document.getElementById('content').classList.remove('hidden');
+window.scrollTo({top:window.innerHeight,behavior:'smooth'});
+}
+
+let count=0;
+const target=100;
+const counter=document.getElementById('counter');
+const timer=setInterval(()=>{
+count++;
+counter.textContent=count;
+if(count>=target){
+clearInterval(timer);
+counter.textContent="∞";
+}
+},40);
+</script>
+
+</body>
+</html>
