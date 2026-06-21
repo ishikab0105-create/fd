@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,12 +19,74 @@ body{margin:0;font-family:Arial,sans-serif;background:#f7f4ef;color:#333}
 .final{text-align:center;padding:80px 20px}
 .counter{font-size:48px;font-weight:bold}
 button{padding:12px 20px;border:none;border-radius:10px;cursor:pointer}
+    .final-screen{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:40px 20px;
+}
+
+.counter{
+    font-size:90px;
+    font-weight:bold;
+    color:#d46a6a;
+    margin-bottom:20px;
+}
+
+.final-screen h2{
+    margin-bottom:30px;
+}
+
+.final-message{
+    opacity:0;
+    transform:translateY(20px);
+    transition:all 1s ease;
+    font-size:24px;
+    line-height:1.8;
+    max-width:700px;
+}
+
+.final-message.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+#confetti{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+}
+          ctx.clearRect(0,0,canvas.width,canvas.height);
+
+        pieces.forEach(p=>{
+            ctx.beginPath();
+            ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+            ctx.fill();
+
+            p.x += p.dx;
+            p.y += p.dy;
+
+            if(p.y > canvas.height){
+                p.y = -10;
+            }
+        });
+
+        requestAnimationFrame(draw);
+    }
+
+    draw();
+}
+
 </style>
 </head>
 <body>
 
 <div class="hero">
-<h1>Dear Dad ❤️</h1>
+<h1>Dear Papa ❤️</h1>
 <p>Click the envelope to open your Father's Day surprise</p>
 <div class="envelope" onclick="openLetter()">💌</div>
 </div>
@@ -33,13 +94,36 @@ button{padding:12px 20px;border:none;border-radius:10px;cursor:pointer}
 <div id="content" class="hidden">
 
 <section class="section">
-<h2>A Letter For You</h2>
 <p>
-Dear Dad,<br><br>
-Thank you for every lesson, every sacrifice, and every moment of support.
-This small website is a collection of memories and reasons why you'll always be my hero.<br><br>
-Love,<br>
-Ishika ❤️
+<p style="font-size:20px;line-height:1.9;">
+Dear Papa,<br><br>
+Thank you for every sacrifice, every lesson, every silent prayer,
+and every time you stood beside me when I needed you most.
+
+<br><br>
+
+You have been our guide, protector, biggest supporter,
+and the person who taught us what strength and kindness truly mean.
+
+<br><br>
+
+No gift can ever fully express how grateful we are for everything you've done.
+
+<br><br>
+
+Happy Father's Day.
+
+<br><br>
+
+With all our love,<br>
+<b>Simran & Ishika ❤️</b>
+</p>
+</div>
+
+<div class="photo-frame">
+
+<!-- REPLACE THIS IMAGE -->
+<img src="your-photo.jpg" alt="Dad and Me">
 </p>
 </section>
 
@@ -90,16 +174,27 @@ Ishika ❤️
 </div>
 </section>
 
-<section class="final">
-<div class="counter" id="counter">0</div>
-<h2>Reasons Dad Is Amazing</h2>
-<p>No website can truly capture everything you've done for me.</p>
-<h1>Happy Father's Day ❤️</h1>
+<script>
+    <section class="final-screen">
+    <div id="counter" class="counter">1</div>
+
+    <h2>Reasons Dad Is Amazing</h2>
+
+    <div id="finalMessage" class="final-message">
+        <p>
+            No website can truly capture everything you've done for me.
+            <br><br>
+            Happy Father's Day, Dad ❤️
+        </p>
+    </div>
+
+    <canvas id="confetti"></canvas>
 </section>
+
 
 </div>
 
-<script>
+
 function openLetter(){
 document.getElementById('content').classList.remove('hidden');
 window.scrollTo({top:window.innerHeight,behavior:'smooth'});
